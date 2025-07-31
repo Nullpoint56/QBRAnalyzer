@@ -1,0 +1,14 @@
+pipeline:
+  checkpoint_dir: ./checkpoints
+  force_recompute: false
+  environment: dev
+
+steps:
+  extract_emails:
+    model: mistral
+    batch_size: 8
+    max_tokens: 2048
+
+  extract_signals:
+    use_llm: true
+    confidence_threshold: 0.75
