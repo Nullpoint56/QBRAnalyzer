@@ -1,15 +1,17 @@
 from pydantic import BaseModel
 
+from core.pipeline.contracts.base import StepOutputBase
 
-class RawTextInput(BaseModel):
-    content: str
 
 class ParsedEmail(BaseModel):
+    file_id: str
     from_: str
     to: list[str]
     date: str
     subject: str
     body: str
 
-class EmailExtractionOutput(BaseModel):
-    emails: list[ParsedEmail]
+
+class RawFileBatch(StepOutputBase[list[ParsedEmail]]):
+    pass
+
